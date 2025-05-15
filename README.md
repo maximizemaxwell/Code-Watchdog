@@ -1,12 +1,6 @@
 # Code-Watchdog
 Detecting model that can be used in computer based coding-test.
-Detects AI generated code and keystroke anomaly detection(copy&paste, or using LLM..).
-
-## Dataset
-- [Typing Behaivor Dataset](https://cvlab.cse.msu.edu/typing-behavior-dataset.html)
-- [IKDD: A Keystroke Dynamics Dataset for User Classification](https://www.mdpi.com/2078-2489/15/9/511)
-- [AIGCodeSet]()
-
+Detects AI generated code and keystroke anomaly detection(copy&paste, or using LLM..)
 ## Process
 
 ### Trainig
