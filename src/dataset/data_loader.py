@@ -9,11 +9,12 @@ import polars as pl
 from huggingface_hub import hf_hub_download
 from sklearn.model_selection import train_test_split
 
-REPO_DATASET = "basakdemirok/AIGCodeSet"
+REPO_ID = "basakdemirok/AIGCodeSet"
 CSV_FILES = ["data/created_dataset_with_llms.csv", "data/human_selected_dataset.csv"]
 
 
 def _download_csvs(repo: str = REPO_ID, csvs: List[str] = CSV_FILES) -> List[Path]:
+    # Download CSV files from the Hugging Face Hub
     return [Path(hf_hub_download(repo_id=repo, filename=csv)) for csv in csvs]
 
 
@@ -21,6 +22,9 @@ def load_code_llm_dataset(
     test_size: float = 0.2,
     seed: int = 42,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, pl.DataFrame]:
+    """
+    Load the Code LLM dataset from the Hugging Face Hub.
+    """
     paths = _download_csvs()
     df_list = []
     for path in paths:

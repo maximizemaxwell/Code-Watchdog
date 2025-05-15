@@ -3,6 +3,10 @@ from dataclasses import dataclass
 
 @dataclass
 class Config:
+    """
+    Configuration class for the model.
+    """
+
     epochs: int = 50
     latent: int = 8
     alpha_fusion: float = 0.6
