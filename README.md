@@ -1,4 +1,6 @@
 # Code-Watchdog
+Detecting model that can be used in computer based coding-test.
+Detects AI generated code and keystroke anomaly detection(copy&paste, or using LLM..).
 
 ## Dataset
 - [Typing Behaivor Dataset](https://cvlab.cse.msu.edu/typing-behavior-dataset.html)
@@ -7,13 +9,15 @@
 
 ## Process
 
-### 학습 방법
-비지도 학습:
-- 일반 사용자 입력 데이터를 기반으로 정상 패턴을 학습하고 매크로 입력을 이상치로 탐지
-- Isolation Forest(IF)
+### Trainig
 
-이상 점수 계산법: 키보드와 마우스를 개별 점수로 계산 후 평균을 내어 최종 점수로 사용
+| Sub-task                        | Model type                           | Objective                                                                                                     | Loss / Metric                            |
+| ------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| **Code origin detection**       | *Supervised* MLP (or any classifier) | Predict whether a code snippet was written by a human (`HUMAN`) or an LLM name (`Gemini`, `Llama`, …) | Binary-cross-entropy (BCE); AUC          |
+| **Keystroke anomaly detection** | *Unsupervised* Auto-Encoder          | Reproduce normal keystroke feature vectors; high reconstruction error ⇒ anomaly                               | Mean-squared-error (MSE); AUROC over MSE |
 
-### 실시간 애플리케이션 테스트
-- pynput 라이브러리를 이용해 키보드와 마우스 이벤트를 수집
+
+### Real-time Application
+- Implemented in web, React-wasm
+- Real time keystroke-ai gen code detection
 
